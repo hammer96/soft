@@ -28,7 +28,7 @@ public function __construct()
 
             );
 
-        $r=$this->db->insert("perfiles",$data);
+        $r=$this->db->insert("seguridad.perfiles",$data);
         if ($r) {
            echo 'Insertando';
         }

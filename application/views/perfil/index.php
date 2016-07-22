@@ -34,98 +34,98 @@
 						</div>
 						<div class="main-content">
 							<section>
-							<div class="main-content">
-							<section>
-								<div class="container-fluid container-padded">
-									<div class="row">
-										<div class="col-md-12 page-title">
+								<div class="main-content">
+									<section>
+										<div class="container-fluid container-padded">
+											<div class="row">
+												<div class="col-md-12 page-title">
 
 
-												<div class="pull-right">
-													<button id="btnnuevo" onclick="modal()" data-toggle="modal" data-target="#mod-form" type="button" class="btn btn-success"><i class="fa-plus-square"></i> Nuevo Perfil</button>
-												</div>
+													<div class="pull-right">
+														<button id="btnnuevo" onclick="modal()" data-toggle="modal" data-target="#mod-form" type="button" class="btn btn-success"><i class="fa-plus-square"></i> Nuevo Perfil</button>
+													</div>
 													<h2>Perfiles</h2>
-											<hr>
+													<hr>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
 
-								<div class="container-fluid container-padded">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="panel panel-plain">
-												<div class="panel-body">
-													<div class="table-responsive">
-														<table cellpadding="0" cellspacing="0" border="10" class="datatable table table-striped table-bordered">
-															<thead>
-																<tr>
-																	<th>Id</th>
-																	<th>Descripcion</th>
-																	<th>Estado</th>
-																	<th>Acciones</th>
-																</tr>
-															</thead>
-															<tbody id="informacion">
-																<?php
+										<div class="container-fluid container-padded">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="panel panel-plain">
+														<div class="panel-body">
+															<div class="table-responsive">
+																<table cellpadding="0" cellspacing="0" border="10" class="datatable table table-striped table-bordered">
+																	<thead>
+																		<tr>
+																			<th>Id</th>
+																			<th>Descripcion</th>
+																			<th>Estado</th>
+																			<th>Acciones</th>
+																		</tr>
+																	</thead>
+																	<tbody id="informacion">
+																		<?php
 
-																foreach ($perfiles as $key => $value) {
-																	echo '<tr>';
-																	echo '<td>'.$value->perfil_id.'</td>';
-																	echo '<td>'.$value->perfil_descripcion.'</td>';
-																	echo '<td>'.$value->estado.'</td>';
-																	echo '<td><button  onclick="modificar_perfil()"  type="button" class="btn btn-primary"><i class="fa-file-text-o"></i></button>';
-																}
+																		foreach ($perfiles as $key => $value) {
+																			echo '<tr>';
+																			echo '<td>'.$value->perfil_id.'</td>';
+																			echo '<td>'.$value->perfil_descripcion.'</td>';
+																			echo '<td>'.$value->estado.'</td>';
+																			echo '<td><button  onclick="modificar_perfil()"  type="button" class="btn btn-primary"><i class="fa-file-text-o"></i></button>';
+																		}
 
-																?>
+																		?>
 
-															</tbody>
-														</table>
+																	</tbody>
+																</table>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</section>
+											</section>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 
 
-							</section>
-						</div>
+						</section>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="modal fade" id="mod-form" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Nuevo Perfil</h4>
-				</div>
-				<div class="modal-body">
-					<form name="perfil_insert" role="form"  method="POST">
-						<div class="form-group">
-							<input type="hidden" name="perfil_id" value="">
-							<label for="descripcion">Descripcion:</label>
-							<input  name="descripcion" type="text" class="form-control"  placeholder="Ingrese la descripcion">
-							<div id="msg_perfil"></div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-					<button type="button" onclick="guardar_perfil()"  class="btn btn-success" >Guardar</button>
-				</div>
+<div class="modal fade" id="mod-form" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Nuevo Perfil</h4>
+			</div>
+			<div class="modal-body">
+				<form name="perfil_insert" role="form"  method="POST">
+					<div class="form-group">
+						<input type="hidden" name="perfil_id" value="">
+						<label for="descripcion">Descripcion:</label>
+						<input  name="descripcion" type="text" class="form-control"  placeholder="Ingrese la descripcion">
+						<div id="msg_perfil"></div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				<button type="button" onclick="guardar_perfil()"  class="btn btn-success" >Guardar</button>
 			</div>
 		</div>
 	</div>
-	<?php include("assets/layouts/footer.php"); ?>
-	<?php include("assets/layouts/js.php"); ?>
-	<?php include("assets/app/perfil.php") ?>
+</div>
+<?php include("assets/layouts/footer.php"); ?>
+<?php include("assets/layouts/js.php"); ?>
+<?php include("assets/app/perfil.php") ?>
 </body>
 
 </html>
