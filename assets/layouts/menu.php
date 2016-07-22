@@ -73,16 +73,16 @@
 						</li>
 					</ul>
 				</li>
-				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-laptop"></i> <span>Layouts</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
+				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-laptop"></i> <span>Seguridad</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
 					<ul class="sub-menu-list">
 						<li >
-							<a href="layout_grid.html">Grid system</a>
+							<a href="<?php echo site_url("Perfil_controlador") ?>">Perfil</a>
 						</li>
 						<li >
-							<a href="layout_full.html">Full-width</a>
+							<a href="">Modulos</a>
 						</li>
 						<li class="active">
-							<a href="layout_blank.html">Blank page</a>
+							<a href="layout_blank.html">Empleados</a>
 						</li>
 					</ul>
 				</li>

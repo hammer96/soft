@@ -5,6 +5,31 @@
 <script src="<?php echo base_url() ?>assets/js/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/js/lib/tabdrop/bootstrap-tabdrop.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/js/scripts.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/js/lib/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/lib/datatables/datatables.js" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/js/lib/bootstrap_growl/bootstrap-growl.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/js/pages/ui_alerts.js" type="text/javascript"></script>
+
+
+
+
+<script type="text/javascript">
+					$(document).ready(function() {
+						$('.datatable').dataTable({
+							"sPaginationType": "bs_four_button"
+						});
+						$('.datatable').each(function(){
+							var datatable = $(this);
+// SEARCH - Add the placeholder for Search and Turn this into in-line form control
+var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+search_input.attr('placeholder', 'Buscar');
+search_input.addClass('form-control input-sm');
+// LENGTH - Inline-Form control
+var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+length_sel.addClass('form-control input-sm');
+});
+					});
+				</script>
 <script>
 	/*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

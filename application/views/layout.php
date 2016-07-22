@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Proctor - by Creligent </title>
+	<title>System Comerce </title>
 	<link href="favicon1.html" rel="icon" type="image/x-icon" />
 	<?php include("assets/layouts/css.php"); ?>
 </head>
@@ -25,7 +25,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<ol class="breadcrumb">
-										<li><a href="#">Home</a></li>
+										<li><a href="#">Inicio</a></li>
 										<li><a href="#">Library</a></li>
 										<li class="active">Data</li>
 									</ol>
