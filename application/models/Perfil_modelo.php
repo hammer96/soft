@@ -9,15 +9,15 @@ public function __construct()
 
     public function traerperfil()// es para mstrar en la tabla
 	{
-		//return $this->db->get_where("perfiles",array("estado"=>"1"))->result();
+		//return $this->db->get_where("perfil",array("estado"=>"1"))->result();
 		return $this->db->query("SELECT
-			seguridad.perfiles.perfil_id,
-			seguridad.perfiles.perfil_descripcion,
-			seguridad.perfiles.estado
+			seguridad.perfil.perfil_id,
+			seguridad.perfil.perfil_descripcion,
+			seguridad.perfil.estado
 			FROM
-			seguridad.perfiles
+			seguridad.perfil
 			WHERE
-			seguridad.perfiles.estado = 1")->result();
+			seguridad.perfil.estado = 1")->result();
 
 	}
 
@@ -28,7 +28,7 @@ public function __construct()
 
             );
 
-        $r=$this->db->insert("seguridad.perfiles",$data);
+        $r=$this->db->insert("seguridad.perfil",$data);
         if ($r) {
            echo 'Insertando';
         }
@@ -40,7 +40,7 @@ public function __construct()
     public function traer_perfil()//es para jalar uno
     {
     	$this->db->where('perfil_id',$this->input->post('perfil_id'));
-    	return $this->db->get('seguridad.perfiles')->row();
+    	return $this->db->get('seguridad.perfil')->row();
     }
     public function modificar_perfil()
     {
@@ -51,7 +51,7 @@ public function __construct()
 
                 );
     	$this->db->where('perfil_id',$this->input->post('perfil_id'));
-             $r=$this->db->update("seguridad.perfiles",$data);
+             $r=$this->db->update("seguridad.perfil",$data);
             if ($r) {
                 echo 'modifcado';
             }
@@ -65,7 +65,7 @@ public function __construct()
                 'estado'=>'0'
                 );
             $this->db->where('perfil_id',$this->input->post('perfil_id'));
-          $r=$this->db->update('seguridad.perfiles',$data);
+          $r=$this->db->update('seguridad.perfil',$data);
             if ($r){
                 echo 'eliminado';
 

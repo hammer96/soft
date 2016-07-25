@@ -1,36 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Empleado_controlador extends CI_Controller {
+require_once "BaseController.php";
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function __construct()
-	{
+class EmpleadoController extends CI_Controller {
+
+	public function __construct() {
 		parent:: __construct();
-		$this->load->model('Empleado_modelo');
-
 	}
 
 
-	public function index()
-	{
-		$data["empleados"]=$this->Empleado_modelo->traer_emple();
+	public function index() {
+
+		$view = "empleado/index";
+		#$data["empleados"]=$this->db->get_where();
 		$data["perfiles"]=$this->Empleado_modelo->traer_perfiles();
-		$this->load->view('empleado/index',$data);
+		$data["url"] = base_url()."modulos";
+		$data["scripts"] = $this->cargar_js(["empleado.js"]);
+		parent::init($view,$data);
+
 	}
 
      public function tabla()
