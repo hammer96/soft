@@ -35,7 +35,18 @@ class Perfil_controlador extends CI_Controller {
      public function tabla()
      {
           $html="";
+          $perfiles = $this->Perfil_modelo->traerperfil();
+          foreach ($perfiles as $key => $value) {
+			$html.= '<tr>';
+  			$html.= '<td>'.$value->perfil_id.'</td>';
+			$html.= '<td>'.$value->perfil_descripcion.'</td>';
+			$html.= '<td>'.$value->estado.'</td>';
 
+			$html.= '<td><button  onclick="modificar_perfil('.$value->perfil_id.')"  type="button" class="btn btn-primary"><i class="fa-file-text-o"></i></button>  <button onclick="eliminar_p('.$value->perfil_id.')" type="button" class="btn btn-danger"></button>';
+			$html.='</tr>';
+
+		}
+		return $html;
      }
 
 	public function guarda_perfil()
@@ -45,9 +56,29 @@ class Perfil_controlador extends CI_Controller {
 
                $result=$this->Perfil_modelo->guardarperfil();
 		}else{
-               $result=$this->Perfil_modelo->modifcar_perfil();
+               $result=$this->Perfil_modelo->modificar_perfil();
+
           }
+          $tabla = $this->tabla();
+		echo  $result."|".$tabla;
+
 	}
+
+	public function traer_perfiles()
+	{
+		$res=$this->Perfil_modelo->traer_perfil();
+		echo json_encode($res);
+
+	}
+	public function eliminar_perfil()
+	{
+		$result=$this->Perfil_modelo->eliminarp();
+		$perfiles = $this->Perfil_modelo->traerperfil();
+
+		$tabla = $this->tabla();
+		echo  $result."|".$tabla;
+	}
+
 
 
 }
