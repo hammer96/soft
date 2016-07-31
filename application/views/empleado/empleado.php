@@ -126,8 +126,8 @@
 						<input type="hidden" name="empleado_id" value="">
 						<label for="nombres" class="col-sm-4 control-label">Nombres:</label>
 						<div class="col-sm-0">
-						<input  name="nombres" type="text" class="form-control"  placeholder="Ingrese sus nombres">
-						<div id="msg_n"></div>
+							<input  name="nombres" type="text" class="form-control"  placeholder="Ingrese sus nombres">
+							<div id="msg_n"></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -154,32 +154,32 @@
 						<label for="telefono">Telefono:</label>
 						<input  name="telefono" type="text" class="form-control"  placeholder="Ingrese su numero telelfonico">
 						<div id="msg_telefono"></div>
-						</div>
-						<div class="form-group">
-						<input type="hidden" name="idhijo" value="">
-                                        <label for="normal-field" class="col-sm-7 control-label">Cargo:</label>
-                                        <div class="col-sm-0">
-                                            <select name="perfil_id" id="" class="form-control">
-                                                <option value="">Seleccione</option>
-                                                 <?php
-                                                    foreach($perfiles as $value) {
-                                                        echo '<option value="'.$value->perfil_id.'">'.$value->perfil_descripcion.'</option>';
-                                                    }
-                                                 ?>
-                                            </select>
-
-                                        </div>
-							</div>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<button type="button" onclick="guardar_empleado()"  class="btn btn-success" >Guardar</button>
-			</div>
+					<div class="form-group">
+						<input type="hidden" name="idhijo" value="">
+						<label for="normal-field" class="col-sm-7 control-label">Cargo:</label>
+						<div class="col-sm-0">
+							<select name="perfil_id" id="" class="form-control">
+								<option value="">Seleccione</option>
+								<?php
+								foreach($perfiles as $value) {
+									echo '<option value="'.$value->perfil_id.'">'.$value->perfil_descripcion.'</option>';
+								}
+								?>
+							</select>
 
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			<button type="button" onclick="guardar_empleado()"  class="btn btn-success" >Guardar</button>
+		</div>
+
 	</div>
+</div>
 </div>
 <?php include("assets/layouts/footer.php"); ?>
 <?php include("assets/layouts/js.php"); ?>

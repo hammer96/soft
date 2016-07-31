@@ -73,12 +73,12 @@
 						</li>
 					</ul>
 				</li>
-				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-laptop"></i> <span>Seguridad</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
+				<li class="menu-list"><a href="#"><i class="ion ion-laptop"></i> <span>Seguridad</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
 					<ul class="sub-menu-list">
 						<li class="">
 							<a href="<?php echo site_url("Perfil_controlador") ?>">Perfil</a>
 						</li>
-						<li class="active" >
+						<li class="" >
 							<a href="<?php echo site_url("Modulo_Controlador") ?>">Modulos</a>
 						</li>
 						<li class="">

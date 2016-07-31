@@ -11,13 +11,12 @@ class LoginController extends BaseController {
 
 	public function index() {
 		$this->load->view("login");
-
 	}
 
 	public function loguearse() {
 		$result = $this->db->get_where("seguridad.empleado",array(
-				"empleado_user" => $this->input->post("empleado_user"),
-				"empleado_pass" => $this->input->post("empleado_pass")
+			"empleado_user" => $this->input->post("user"),
+			"empleado_pass" => $this->input->post("pass")
 			))->row();
 
 		if(count($result)>0) {

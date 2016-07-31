@@ -45,15 +45,15 @@
 									</div> -->
 									<?php
 
-										if(isset($param)) {
-											foreach ($param as $key => $value) {
-												$data[$key] = $value;
-											}
-
-											$this->load->view($view,$data);
-										}else{
-											$this->load->view($view);
+									if(isset($param)) {
+										foreach ($param as $key => $value) {
+											$data[$key] = $value;
 										}
+
+										$this->load->view($view,$data);
+									}else{
+										$this->load->view($view);
+									}
 
 									?>
 								</div>

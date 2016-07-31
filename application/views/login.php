@@ -37,7 +37,7 @@
 					<div class="panel-body">
 						<div class="panel-desc">Sign in</div>
 						<hr>
-						<form role="form" action="">
+						<form role="form" action="" id="form_login">
 							<div class="form-group">
 								<input type="email" class="form-control input-lg" id="user" required placeholder="Usuario">
 							</div>
@@ -74,13 +74,28 @@
 	<script>
 		$(".btn_login").on("click",function(e) {
 			e.preventDefault();
-			$.post('<?php echo site_url("loginController/loguearse") ?>',{},function(json){
+			$.ajax({
+				url: '<?php echo site_url("loginController/loguearse") ?>',
+				type: 'POST',
+				dataType: 'json',
+				data: $("#form_login").serialize(),
+			})
+			.done(function(json) {
+
 				if(json.response = 'ok') {
 					window.location = "<?php echo site_url("principalController"); ?>";
 				} else {
 					alert("ususario o contraseña incorrectos");
 				}
-			},'json');
+
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+
 		})
 	</script>
 </body>

@@ -28,6 +28,7 @@ class Perfil_controlador extends CI_Controller {
 
 	public function index()
 	{
+		$view = "perfil/perfil";
 		$data["perfiles"]=$this->Perfil_modelo->traerperfil();
 		$this->load->view('perfil/index',$data);
 	}
