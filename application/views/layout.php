@@ -21,7 +21,9 @@
 				<div class="side-nav-content">
 					<?php include("assets/layouts/menu.php"); ?>
 					<div class="main-content-wrapper">
-						<div class="container-fluid container-padded dash-controls">
+
+
+						<!-- <div class="container-fluid container-padded dash-controls">
 							<div class="row">
 								<div class="col-md-12">
 									<ol class="breadcrumb">
@@ -31,24 +33,37 @@
 									</ol>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<div class="main-content">
 							<section>
 								<div class="container-fluid container-padded">
-									<div class="row">
+									<!-- <div class="row">
 										<div class="col-md-12 page-title">
 											<h2>Blank page</h2>
 											<hr>
 										</div>
-									</div>
+									</div> -->
+									<?php
+
+									if(isset($param)) {
+										foreach ($param as $key => $value) {
+											$data[$key] = $value;
+										}
+
+										$this->load->view($view,$data);
+									}else{
+										$this->load->view($view);
+									}
+
+									?>
 								</div>
-								<div class="container-fluid container-padded">
+								<!-- <div class="container-fluid container-padded">
 									<div class="row">
 										<div class="col-md-12">
 											Blank page.
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</section>
 						</div>
 					</div>

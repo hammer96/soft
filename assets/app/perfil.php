@@ -24,10 +24,10 @@
 			success:function(data){
 				$info = data.split("|");
 				if ($info[0]=="1")
-				 {
-				 	$("#informacion").empty();
-				 	$("#informacion").html($info[1]);
-				 	alert("Exito al guardar");
+				{
+					$("#informacion").empty();
+					$("#informacion").html($info[1]);
+					alert("Exito al guardar");
 
 				}else
 				{
@@ -40,7 +40,42 @@
 
 
 		});
+
 	}
+
+	function modificar_perfil(perfil_id)
+	{
+		$.post("<?php echo site_url('Perfil_controlador/traer_perfiles') ?>",
+		{
+			perfil_id:perfil_id
+		}, function(data){
+			var json=JSON.parse(data);
+			$("input[name=perfil_id]").val(json.perfil_id);
+			$("input[name=descripcion]").val(json.descripcion);
+			$("#mod-form").modal('show');
+		});
+
+
+	}
+
+	function eliminar_p(perfil_id)
+		{
+			$.post("<?php echo site_url('Perfil_controlador/eliminar_perfil') ?> ",
+			{
+				perfil_id:perfil_id
+			},function(data)
+			{
+				$info = data.split("|");
+				if($info[0] == "1") {
+					//limpiamos el cuerpo de la tabla
+					$("#informacion").empty();
+					//agregamos los nuevos productos listados
+					$("#informacion").html($info[1]);
+				}else{
+					alert("Error al eliminar");
+				}
+			})
+		}
 
 
 

@@ -42,9 +42,9 @@
 
 
 													<div class="pull-right">
-														<button id="btnnuevo" onclick="modal()" data-toggle="modal" data-target="#mod-form" type="button" class="btn btn-success"><i class="fa-plus-square"></i> Nuevo Perfil</button>
+														<button id="btnnuevo" onclick="modal()" data-toggle="modal" data-target="#mod-form" type="button" class="btn btn-success"><i class="fa-plus-square"></i> Nuevo Modulo</button>
 													</div>
-													<h2>Perfiles</h2>
+													<h2>Modulos</h2>
 													<hr>
 												</div>
 											</div>
@@ -60,7 +60,10 @@
 																	<thead>
 																		<tr>
 																			<th>Id</th>
-																			<th>Descripcion</th>
+																			<th>Nombre</th>
+																			<th>Icono</th>
+																			<th>URL</th>
+																			<th>Padre</th>
 																			<th>Estado</th>
 																			<th>Acciones</th>
 																		</tr>
@@ -68,12 +71,15 @@
 																	<tbody id="informacion">
 																		<?php
 
-																		foreach ($perfiles as $key => $value) {
+																		foreach ($modulos as $key => $value) {
 																			echo '<tr>';
-																			echo '<td>'.$value->perfil_id.'</td>';
-																			echo '<td>'.$value->perfil_descripcion.'</td>';
+																			echo '<td>'.$value->modulo_id.'</td>';
+																			echo '<td>'.$value->modulo_nombre.'</td>';
+																			echo '<td>'.$value->modulo_icono.'</td>';
+																			echo '<td>'.$value->modulo_url.'</td>';
+																			echo '<td>'.$value->modulo_padre.'</td>';
 																			echo '<td>'.$value->estado.'</td>';
-																			echo '<td><button  onclick="modificar_perfil('.$value->perfil_id.')"  type="button" class="btn btn-primary"><i class="fa-file-text-o"></i></button> <button onclick="eliminar_p('.$value->perfil_id.')" type="button" class="btn btn-danger"></button>'
+																			echo '<td><button  onclick="modificar_modulo('.$value->modulo_id.')"  type="button" class="btn btn-primary"><i class="fa-file-text-o"></i></button> <button onclick="eliminar_m('.$value->modulo_id.')" type="button" class="btn btn-danger"></button>'
 																			;
 
 																		}
@@ -106,28 +112,58 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Nuevo Perfil</h4>
+				<h4 class="modal-title">Nuevo Modulo</h4>
 			</div>
 			<div class="modal-body">
-				<form name="perfil_insert" role="form"  method="POST">
+				<form name="modulo_insert" role="form"  method="POST">
 					<div class="form-group">
-						<input type="hidden" name="perfil_id" value="">
-						<label for="descripcion">Descripcion:</label>
-						<input  name="descripcion" type="text" class="form-control"  placeholder="Ingrese la descripcion">
-						<div id="msg_perfil"></div>
+						<input type="hidden" name="modulo_id" value="">
+						<label for="nombre" class="col-sm-4 control-label">Nombre:</label>
+						<div class="col-sm-0">
+						<input  name="nombre" type="text" class="form-control"  placeholder="Ingrese sus nombres">
+						<div id="msg_n"></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="icono">Icono:</label>
+						<input  name="icono" type="text" class="form-control"  placeholder="Icono">
+						<div id="msg_i"></div>
+					</div>
+					<div class="form-group">
+						<label for="url">URL:</label>
+						<input  name="url" type="text" class="form-control"  placeholder="Ingrese la url">
+						<div id="msg_u"></div>
+					</div>
+
+						<div class="form-group">
+						<input type="hidden" name="idhijo" value="">
+                                        <label for="normal-field" class="col-sm-7 control-label">Padre:</label>
+                                        <div class="col-sm-0">
+                                            <select name="id_padre" id="" class="form-control">
+                                                <option value="">Seleccione</option>
+                                                 <?php
+                                                    foreach($padres as $value) {
+                                                        echo '<option value="'.$value->modulo_id.'">'.$value->modulo_nombre.'</option>';
+                                                    }
+                                                 ?>
+                                            </select>
+
+                                        </div>
+							</div>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<button type="button" onclick="guardar_perfil()"  class="btn btn-success" >Guardar</button>
+				<button type="button" onclick="guardar_modulo()"  class="btn btn-success" >Guardar</button>
 			</div>
+
 		</div>
 	</div>
 </div>
 <?php include("assets/layouts/footer.php"); ?>
 <?php include("assets/layouts/js.php"); ?>
-<?php include("assets/app/perfil.php") ?>
+<?php include("assets/app/modulo.php") ?>
 </body>
 
 </html>
