@@ -74,17 +74,38 @@ abstract class BaseController extends CI_Controller {
 	public function grilla($columns,$table) {
 
 		$total_registros = $this->db->get_where($table,array("estado"=>"1"))->num_rows();
-		$sql = "select ";
-		for ($i=0; $i < count($columns) ; $i++) {
+		$total_filtered = $total_registros;
+		$select = "select ";
+		$where = "where 1=1 ";
+
+		for ($i=0 ; $i < count($columns) ; $i++) {
+			if($i == 0) {
+				$where .= "and ( ".$columns[$i]." like '".$_REQUEST['search']['value']."%' ";
+			}
 			if($i == count($columns)-1) {
-				$sql .= $columns[$i];
+				$select .= $columns[$i]." ";
+				$where = "or ".$columns[$i]." like '".$_REQUEST['search']['value']."%' )";
 			} else {
-				$sql .= $columns[$i].", ";
+				$select .= $columns[$i].", ";
+				$where = "or ".$columns[$i]." like '".$_REQUEST['search']['value']."%' ";
 			}
 
 		}
 
-		$this->db->select($sql)->get($table)->result();
+		$order_by = " order by ". $columns[$_REQUEST['order'][0]['column']]." ".$_REQUEST['order'][0]['dir']." limit ".$_REQUEST['start']." ,".$_REQUEST['length']."  ";
+		$consulta = $select.$where.$order_by;
+
+		$data = $this->db->query($consulta)->result();
+
+		$json_data = array(
+			"draw"            => intval( $_REQUEST['draw'] ),
+			"recordsTotal"    => intval( $total_data ),
+			"recordsFiltered" => intval( $total_filtered ),
+			"data"            => $data
+			);
+
+		echo json_encode($json_data);
+
 	}
 
 
