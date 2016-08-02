@@ -71,7 +71,7 @@ abstract class BaseController extends CI_Controller {
 		return $dato;
 	}
 
-	public function grilla($columns,$table,) {
+	public function grilla($columns,$table) {
 
 		$total_registros = $this->db->get_where($table,array("estado"=>"1"))->num_rows();
 		$sql = "select ";
