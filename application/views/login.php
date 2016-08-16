@@ -70,7 +70,7 @@
 	<script src="<?php echo base_url();?>assets/js/lib/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>assets/js/lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>assets/js/lib/slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/js/scripts.min.js" type="text/javascript"></script>
+
 	<script>
 		$(".btn_login").on("click",function(e) {
 			e.preventDefault();
@@ -83,7 +83,7 @@
 			.done(function(json) {
 
 				if(json.response = 'ok') {
-					window.location = "<?php echo site_url("principalController"); ?>";
+					window.location = "<?php echo site_url('principalController'); ?>";
 				} else {
 					alert("ususario o contraseña incorrectos");
 				}
