@@ -79,7 +79,7 @@
 							<a href="<?php echo site_url("Perfil_controlador") ?>">Perfil</a>
 						</li>
 						<li class="" >
-							<a href="<?php echo site_url("Modulo_Controlador") ?>">Modulos</a>
+							<a href="<?php echo site_url("ModuloController") ?>">Modulos</a>
 						</li>
 						<li class="">
 							<a href="<?php echo site_url("Empleado_controlador") ?>">Empleados</a>

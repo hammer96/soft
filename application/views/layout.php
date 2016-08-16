@@ -71,8 +71,19 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		var url_base = "<?php echo base_url(); ?>"
+	</script>
 	<?php include("assets/layouts/footer.php"); ?>
 	<?php include("assets/layouts/js.php"); ?>
+	<?php
+		if(isset($data["scripts"])) {
+			foreach ($data["scripts"] as $key => $value) {
+				echo $value;
+			}
+		}
+	 ?>
+
 </body>
 
 </html>

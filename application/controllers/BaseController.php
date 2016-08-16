@@ -1,10 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-abstract class BaseController extends CI_Controller {
+class BaseController extends CI_Controller {
 
 	private $css; // css a incluir a la plantilla
 	private $js; // js a incluir a la plantilla
+
+
+
 
 	public function __construct()
 	{
@@ -45,7 +48,7 @@ abstract class BaseController extends CI_Controller {
 	public function cargar_js($js_array)
 	{
 		for($i = 0 ; $i < count($js_array) ; $i++) {
-			$this->js[] = '<script src="'.base_url('public/app_js/'.$js_array[$i]).'"></script>';
+			$this->js[] = '<script src="'.base_url('assets/app/'.$js_array[$i]).'"></script>';
 		}
 		return $this->js;
 	}
@@ -71,43 +74,20 @@ abstract class BaseController extends CI_Controller {
 		return $dato;
 	}
 
-	public function grilla($columns,$table) {
 
-		$total_registros = $this->db->get_where($table,array("estado"=>"1"))->num_rows();
-		$total_filtered = $total_registros;
-		$select = "select ";
-		$where = "where 1=1 ";
 
-		for ($i=0 ; $i < count($columns) ; $i++) {
-			if($i == 0) {
-				$where .= "and ( ".$columns[$i]." like '".$_REQUEST['search']['value']."%' ";
-			}
-			if($i == count($columns)-1) {
-				$select .= $columns[$i]." ";
-				$where = "or ".$columns[$i]." like '".$_REQUEST['search']['value']."%' )";
-			} else {
-				$select .= $columns[$i].", ";
-				$where = "or ".$columns[$i]." like '".$_REQUEST['search']['value']."%' ";
-			}
-
+	public function grillaHeader() {
+		$html = '<table id="'.$_REQUEST["id"].'" class="display" cellspacing="0" width="100%">';
+		$html .= '<thead><tr>';
+		for ($i=0; $i < count($_REQUEST["columns"]) ; $i++) {
+			$html .= '<th>'.$_REQUEST["columns"][$i].'</th>';
 		}
+		$html .= '</tr></thead>';
 
-		$order_by = " order by ". $columns[$_REQUEST['order'][0]['column']]." ".$_REQUEST['order'][0]['dir']." limit ".$_REQUEST['start']." ,".$_REQUEST['length']."  ";
-		$consulta = $select.$where.$order_by;
-
-		$data = $this->db->query($consulta)->result();
-
-		$json_data = array(
-			"draw"            => intval( $_REQUEST['draw'] ),
-			"recordsTotal"    => intval( $total_data ),
-			"recordsFiltered" => intval( $total_filtered ),
-			"data"            => $data
-			);
-
-		echo json_encode($json_data);
-
+		$html .= '</table>';
+		$data["html"] = $html;
+		echo json_encode($data);
 	}
-
 
 
 }
